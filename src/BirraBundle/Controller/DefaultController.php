@@ -14,4 +14,14 @@ class DefaultController extends Controller
     {
         return $this->render('BirraBundle:Default:index.html.twig');
     }
+
+    /**
+     * @Route("/cerveza/{id}", name="searchCerveza") 
+     */
+    public function showAction($id)
+    {
+        $birra = $this->getDoctrine()->getRepository('BirraBundle:Cerveza')->findById($id);
+        
+        return $this->render('BirraBundle:Default:cerveza-list.html.twig', array('birra' => $birra));
+    }
 }

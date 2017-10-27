@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div>
+    {% for birras in birra %}
+        <ul>
+            <li><b>Nombre</b> = {{ birras.nombre }}</li>
+            <li><b>Pais</b> = {{ birras.pais }}</li>
+            <li><b>Población</b> = {{ birras.poblacion }}</li>
+            <li><b>Tipo</b> = {{ birras.tipo }}</li>
+            <li><b>Importación</b> = {{ birras.importacion }}</li>
+            <li><b>Tamaño</b> = {{ birras.tamanyo }}</li>
+            <li><b>Fecha</b> = {{ birras.fechaAlmacen | date }}</li>
+            <li><b>Cantidad</b> = {{ birras.cantidad }}</li>
+            <li><b>Foto</b> = {{ birras.foto }}</li>
+        </li>
+        </ul>
+        {% endfor %}
+{% endblock %}
