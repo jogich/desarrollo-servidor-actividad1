@@ -3,19 +3,39 @@
     {{ parent() }}
 {% endblock %}
 {% block body %}
-    <div>
-    {% for birras in birra %}
-        <ul>
-            <li><b>Nombre</b> = {{ birras.nombre }}</li>
-            <li><b>Pais</b> = {{ birras.pais }}</li>
-            <li><b>Población</b> = {{ birras.poblacion }}</li>
-            <li><b>Tipo</b> = {{ birras.tipo }}</li>
-            <li><b>Importación</b> = {{ birras.importacion }}</li>
-            <li><b>Tamaño</b> = {{ birras.tamanyo }}</li>
-            <li><b>Fecha</b> = {{ birras.fechaAlmacen | date }}</li>
-            <li><b>Cantidad</b> = {{ birras.cantidad }}</li>
-            <li><b>Foto</b> = {{ birras.foto }}</li>
-        </li>
-        </ul>
-        {% endfor %}
+    <div class="text-center">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>País</th>
+                    <th>Población</th>
+                    <th>Tipo</th>
+                    <th>Importación</th>
+                    <th>Tamaño</th>
+                    <th>Fecha</th>
+                    <th>Cantidad</th>
+                    <th>Foto</th>
+                    <th>Modificar</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for birras in birra %}
+                <tr>
+                    <td>{{ birras.nombre }}</td>
+                    <td>{{ birras.pais }}</td>
+                    <td>{{ birras.poblacion }}</td>
+                    <td>{{ birras.tipo }}</td>
+                    <td>{{ birras.importacion }}</td>
+                    <td>{{ birras.tamanyo }}</td>
+                    <td>{{ birras.fechaAlmacen | date }}</td>
+                    <td>{{ birras.cantidad }}</td>
+                    <td>{{ birras.foto }}</td>
+                    <td><button class="btn btn-warning"><a href="">Modificar</a></button></td>
+                </tr>
+        
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
