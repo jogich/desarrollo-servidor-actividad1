@@ -49,4 +49,27 @@ class DefaultController extends Controller
 
         return $this->render('BirraBundle:Default:cerveza-new.html.twig', array('cerveza_new' => $form->createView()));
     }
+    
+
+    /**
+     * @Route("/update/{id}", name="updateCerveza")
+     */
+    public function editarCervezaAction(Request $request, $id)
+    {
+
+        $birra = $this->getDoctrine()->getRepository(Cerveza::class)->find($id);
+
+        $form=$this->createForm(CervezaType::class, $birra);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($birra);
+            $em->flush();
+
+            return $this->redirectToRoute('searchCerveza');
+        }
+        return $this->render('BirraBundle:Default:cerveza-update.html.twig', array('update_form'=>$form->createView()));
+    }
 }
